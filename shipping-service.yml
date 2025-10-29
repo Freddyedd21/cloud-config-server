@@ -1,0 +1,9 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: shipping-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://service-discovery-service:8761/eureka/
