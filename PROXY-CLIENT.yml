@@ -1,0 +1,44 @@
+server:
+  port: 8900
+  servlet:
+    context-path: /app
+
+spring:
+  application:
+    name: PROXY-CLIENT
+  zipkin:
+    base-url: ${SPRING_ZIPKIN_BASE_URL:http://zipkin-service:9411/}
+  profiles:
+    active:
+      - dev
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      proxyService:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        automatic-transition-from-open-to-half-open-enabled: true
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        wait-duration-in-open-state: 5s
+        sliding-window-type: COUNT_BASED
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://service-discovery-service:8761/eureka/}
+    register-with-eureka: ${EUREKA_CLIENT_REGISTER_WITH_EUREKA:true}
+    fetch-registry: ${EUREKA_CLIENT_FETCH_REGISTRY:true}
+  instance:
+    prefer-ip-address: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:true}
