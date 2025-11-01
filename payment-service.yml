@@ -1,8 +1,9 @@
 server:
-  port: 8082
+  port: 8400
+
 spring:
   application:
-    name: payment-service
+    name: PAYMENT-SERVICE
 eureka:
   client:
     serviceUrl:

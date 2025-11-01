@@ -1,8 +1,9 @@
 server:
-  port: 8086
+  port: 8800
+
 spring:
   application:
-    name: favourite-service
+    name: FAVOURITE-SERVICE
 eureka:
   client:
     serviceUrl:

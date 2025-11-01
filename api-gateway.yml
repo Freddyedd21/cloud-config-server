@@ -1,8 +1,9 @@
 server:
   port: 8080
+
 spring:
   application:
-    name: api-gateway
+    name: API-GATEWAY
 eureka:
   client:
     serviceUrl:

@@ -1,8 +1,9 @@
 server:
-  port: 8085
+  port: 8600
+
 spring:
   application:
-    name: shipping-service
+    name: SHIPPING-SERVICE
 eureka:
   client:
     serviceUrl:
